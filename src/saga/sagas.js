@@ -17,23 +17,14 @@ function * watchPlusDelay() {
 }
 
 function getInfo() {
-    return fetch('https://api22.github.com/')
+    return fetch('https://api.github.com/')
         .then(resp => resp.text())
         .then(text => text)
 }
 
-function api(url, opts) {
-    return fetch(url, opts).then(function (resp) {
-        return resp.json()
-    })
-        .then(function (resp) {
-            return resp
-        })
-}
-
 function * info() {
     try {
-        const result = yield call(api, 'https://api22.github.com/')
+        const result = yield call(getInfo)
         yield put(infoSuccess(result))
     } catch (ex) {
         yield put(infoError(ex.stack))
