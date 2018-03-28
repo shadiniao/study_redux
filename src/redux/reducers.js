@@ -1,7 +1,6 @@
-import calc from "../reducers/calc";
+import calc from '../reducers/calc'
+import info from '../reducers/info'
 
-export default function reducers(state = {}, action) {
-    return {
-        calc : calc(state.calc, action)
-    }
-}
+import {combineReducers} from "redux";
+
+export default combineReducers({calc, info})
