@@ -14,10 +14,3 @@ ReactDOM.render((
         </div>
     </Provider>
 ), document.getElementById('root'));
-
-const name = 'App'
-
-import (`./${name}`).then(comp => {
-    const app = comp.sayHello()
-
-})
