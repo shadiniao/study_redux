@@ -22,12 +22,21 @@ function getInfo() {
         .then(text => text)
 }
 
+function api(url, opts) {
+    return fetch(url, opts).then(function (resp) {
+        return resp.json()
+    })
+        .then(function (resp) {
+            return resp
+        })
+}
+
 function * info() {
     try {
-        const result = yield call(getInfo)
+        const result = yield call(api, 'https://api22.github.com/')
         yield put(infoSuccess(result))
     } catch (ex) {
-        yield put(infoError(ex))
+        yield put(infoError(ex.stack))
     }
 }
 
